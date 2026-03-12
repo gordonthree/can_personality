@@ -20,6 +20,7 @@
 #pragma once            /** Prevent multiple inclusion */
 #include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h> /* for NULL */
 
 #include "canbus_project.h"
 
