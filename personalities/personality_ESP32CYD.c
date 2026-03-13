@@ -33,7 +33,11 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting / control */ 
         .dataMsgId     = NO_DATA_REPORTING,                        /**< No data reporting */
-        .dataMsgDlc    = NO_DATA_REPORTING                         /**< No data reporting */
+        .dataMsgDlc    = NO_DATA_REPORTING,                        /**< No data reporting */
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE | BUILDER_FLAG_DEVICE_READONLY
+
     },
 
     /* ----------------------------------------------------------------------
@@ -51,7 +55,10 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = SET_DISPLAY_BACKLIGHT_BRIGHTNESS_ID, 
-        .dataMsgDlc    = SET_DISPLAY_BACKLIGHT_BRIGHTNESS_DLC 
+        .dataMsgDlc    = SET_DISPLAY_BACKLIGHT_BRIGHTNESS_DLC,
+        
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE         
     },
         /* ----------------------------------------------------------------------
      * Submodule 2— RED LED, GPIO OUTPUT
@@ -68,7 +75,10 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = SET_LED_STRIP_BRIGHTNESS_ID, 
-        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC 
+        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC,
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
     },
     /* ----------------------------------------------------------------------
      * Submodule 3— GREEN LED, GPIO OUTPUT
@@ -85,7 +95,10 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = SET_LED_STRIP_BRIGHTNESS_ID, 
-        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC 
+        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC,
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
     },
     /* ----------------------------------------------------------------------
      * Submodule 4— BLUE LED, GPIO OUTPUT
@@ -102,7 +115,10 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = SET_LED_STRIP_BRIGHTNESS_ID, 
-        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC 
+        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC,
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
     },
     /* ----------------------------------------------------------------------
      * Submodule 5— Light dependent resistor, ANALOG INPUT
@@ -119,7 +135,10 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = DATA_ADC_RAW_ID, 
-        .dataMsgDlc    = DATA_ADC_RAW_DLC 
+        .dataMsgDlc    = DATA_ADC_RAW_DLC,
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
     }
 };
 

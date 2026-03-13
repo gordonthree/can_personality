@@ -81,7 +81,17 @@ typedef struct {
     uint16_t dataMsgId;         /**< CAN ID for runtime data messages */
     uint8_t  dataMsgDlc;        /**< DLC for runtime data messages */
 
+    /* Submodule builder flags */
+    uint8_t  flags;             /**< Submodule builder flags */
+
 } personalityDef_t;
+
+#define BUILDER_FLAG_NONE             (0)               /**< No flags */
+#define BUILDER_FLAG_AUTO_CONFIGURE   (1U << 0)         /**< Submodule is auto-configured */
+#define BUILDER_FLAG_IS_VIRTUAL       (1U << 1)         /**< Submodule is a virtual device */
+#define BUILDER_FLAG_DEVICE_HIDDEN    (1U << 2)         /**< Submodule is hidden from user interface */
+#define BUILDER_FLAG_DEVICE_DISABLED  (1U << 3)         /**< Submodule is disabled */
+#define BUILDER_FLAG_DEVICE_READONLY  (1U << 4)         /**< Submodule is read-only */
 
 /**
  * @brief Enumerates all hardware personality IDs.
@@ -94,18 +104,25 @@ typedef enum {
     PERS_NONE = 0,              /**< Unconfigured / invalid */
 
     /* Output personalities */
-    PERS_GPIO_OUTPUT = 1,       /**< Generic GPIO output (toggle/momentary/strobe/PWM) */
-    PERS_ARGB_OUTPUT = 2,       /**< Addressable ARGB LED strip (NeoPixelBus) */
-    PERS_RGBW_OUTPUT = 3,       /**< Analog RGBW LED strip (GPIO + PWM) */
-    PERS_ANA_OUTPUT  = 4,       /**< Generic analog output (DAC) */
+    PERS_GPIO_OUTPUT            = 1,       /**< Generic GPIO output (toggle/momentary/strobe/PWM) */
+    PERS_ARGB_OUTPUT            = 2,       /**< Addressable ARGB LED strip (NeoPixelBus) */
+    PERS_RGBW_OUTPUT            = 3,       /**< Analog RGBW LED strip (GPIO + PWM) */
+    PERS_ANA_OUTPUT             = 4,       /**< Generic analog output (DAC) */
 
     /* Input personalities */
-    PERS_GPIO_INPUT    = 10,    /**< Digital GPIO input */
-    PERS_ANALOG_INPUT  = 11,    /**< ADC input */
+    PERS_GPIO_INPUT             = 10,        /**< Digital GPIO input */
+    PERS_ANALOG_INPUT           = 11,        /**< ADC input */
+
+    /* Virtual personalities */
+    VIRT_FREE_HEAP              = 0xC0,      /**< Free heap size (bytes) */
+    VIRT_WIFI_RSSI              = 0xC1,      /**< WiFi RSSI (dBm) */
+    VIRT_RTOS_HIGHWATERMARK     = 0xC2,      /**< FreeRTOS high watermark (bytes) */
+    VIRT_INTERNAL_TEMPERATURE   = 0xC3,      /**< Internal temperature (C) */
+    VIRT_VREF_VOLTAGE           = 0xC4,      /**< Internal voltage reference (Vref) voltage (V) */
 
     /* System personalities */
-    SYS_TOUCH_LCD     = 0xF0,     /**< Touchscreen (e.g., CYD / XPT2046) */
-    SYS_NON_TOUCH_LCD = 0xF1      /**< Generic display (e.g., SSD1306) */
+    SYS_TOUCH_LCD                = 0xF0,     /**< Touchscreen (e.g., CYD / XPT2046) */
+    SYS_NON_TOUCH_LCD            = 0xF1      /**< Generic display (e.g., SSD1306) */
 
     /* Add more as needed */
 } personalityId_t;
@@ -127,7 +144,7 @@ typedef enum {
  *
  * The actual table is defined in a node-type-specific .c file.
  */
-extern const personalityDef_t *personalityTable;  /**< Active personality table */
+extern const personalityDef_t *personalityTable;    /**< Active personality table */
 extern uint8_t g_personalityCount;                  /**< Number of personalities */
 
 /* --------------------------------------------------------------------------

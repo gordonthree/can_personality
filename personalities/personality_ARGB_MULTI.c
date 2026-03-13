@@ -33,7 +33,11 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting / control */
         .dataMsgId     = SET_ARGB_STRIP_COLOR_ID,                       /**< SET_ARGB_STRIP_COLOR */
-        .dataMsgDlc    = SET_ARGB_STRIP_COLOR_DLC                       /**< nodeID x4 + displayId + colorIndex */
+        .dataMsgDlc    = SET_ARGB_STRIP_COLOR_DLC,                      /**< nodeID x4 + displayId + colorIndex */
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
+
     },
 
     /* ----------------------------------------------------------------------
@@ -51,7 +55,11 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = DATA_BUTTON_DOWN_ID,                       /**< INPUT_DIGITAL_GPIO data */
-        .dataMsgDlc    = DATA_BUTTON_DOWN_DLC                       /**< Payload size */
+        .dataMsgDlc    = DATA_BUTTON_DOWN_DLC,                      /**< Payload size */
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
+
     }
 };
 

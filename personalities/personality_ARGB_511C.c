@@ -20,20 +20,23 @@ const personalityDef_t g_personalityTable[] = {
      * ---------------------------------------------------------------------- */
     {
         .personalityId = PERS_ARGB_OUTPUT,
-        .capabilities  = CAP_ARGB,                     /**< ARGB LED strip */
+        .capabilities  = CAP_ARGB,                    /**< ARGB LED strip */
 
         /* Hardware mapping */
-        .gpioPin       = ARGB_511C_PIN,            /**< Pin 19 */
-        .pwmChannel    = NO_PWM_ASSIGNED,                        /**< Not PWM-capable */
-        .pwmTimer      = NO_PWM_ASSIGNED,                        /**< Not PWM-capable */
+        .gpioPin       = ARGB_511C_PIN,               /**< Pin 19 */
+        .pwmChannel    = NO_PWM_ASSIGNED,             /**< Not PWM-capable */
+        .pwmTimer      = NO_PWM_ASSIGNED,             /**< Not PWM-capable */
         .isSinkDriver  = false,                       /**< Not relevant */
 
         /* Data reporting / control */
-        .dataMsgId     = SET_ARGB_STRIP_COLOR_ID,                       /**< SET_ARGB_STRIP_COLOR */
-        .dataMsgDlc    = SET_ARGB_STRIP_COLOR_DLC                       /**< nodeID x4 + displayId + colorIndex */
+        .dataMsgId     = SET_ARGB_STRIP_COLOR_ID,     /**< SET_ARGB_STRIP_COLOR */
+        .dataMsgDlc    = SET_ARGB_STRIP_COLOR_DLC,    /**< nodeID x4 + displayId + colorIndex */
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
     },
     /* ----------------------------------------------------------------------
-     * Submodule 0 — ARGB LED Output
+     * Submodule 1 — ARGB LED Output
      * ---------------------------------------------------------------------- */
     {
         .personalityId = PERS_ARGB_OUTPUT,
@@ -47,7 +50,11 @@ const personalityDef_t g_personalityTable[] = {
 
         /* Data reporting / control */
         .dataMsgId     = SET_ARGB_STRIP_COLOR_ID,                       /**< SET_ARGB_STRIP_COLOR */
-        .dataMsgDlc    = SET_ARGB_STRIP_COLOR_DLC                       /**< nodeID x4 + displayId + colorIndex */
+        .dataMsgDlc    = SET_ARGB_STRIP_COLOR_DLC,                      /**< nodeID x4 + displayId + colorIndex */
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
+
     },
 
     /* ----------------------------------------------------------------------
@@ -65,7 +72,10 @@ const personalityDef_t g_personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = DATA_BUTTON_DOWN_ID,                       /**< INPUT_DIGITAL_GPIO data */
-        .dataMsgDlc    = DATA_BUTTON_DOWN_DLC                       /**< Payload size */
+        .dataMsgDlc    = DATA_BUTTON_DOWN_DLC,                      /**< Payload size */
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE         
     }
 };
 
