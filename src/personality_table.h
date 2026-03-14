@@ -22,6 +22,7 @@
 #include <stdbool.h>
 
 #include "canbus_project.h"
+#include "submodule_types.h"   /**< Sub-module type definitions */
 
 /* --------------------------------------------------------------------------
  * Capability Flags

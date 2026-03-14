@@ -77,8 +77,9 @@ union __attribute__((packed)) {
     } argb;
 
     struct {
-        uint16_t overSampleCnt;  /**< ADC oversampling count */
-        uint8_t  reserved;       /**< Padding - reserved */
+        uint8_t overSampleFlag;  /**< ADC oversampling count */
+        uint8_t reserved1;       /**< Padding - reserved */
+        uint8_t reserved2;       /**< Padding - reserved */
     } analogInput;
 
     /** Analog RGB/RGBW strips */

@@ -139,6 +139,27 @@ const personalityDef_t personalityTable[] = {
 
         /* Submodule builder flags */
         .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
+    },
+
+    /* ----------------------------------------------------------------------
+     * Submodule 6- Speaker Analog Output
+     * ---------------------------------------------------------------------- */
+    {
+        .personalityId = PERS_ANA_OUTPUT,
+        .capabilities  = CAP_ANALOG | CAP_OUTPUT,     
+
+        /* Hardware mapping */
+        .gpioPin       = CYD_SPEAKER_PIN,           
+        .pwmChannel    = NO_PWM_ASSIGNED,              
+        .pwmTimer      = NO_PWM_ASSIGNED,                
+        .isSinkDriver  = false,
+
+        /* Data reporting */
+        .dataMsgId     = DATA_ADC_RAW_ID, 
+        .dataMsgDlc    = DATA_ADC_RAW_DLC,
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE
     }
 };
 

@@ -49,3 +49,7 @@ const subModule_t submod_setup[] = {
     }
     // Add more submodule configurations as needed
 };
+
+/** Number of submodules */
+uint8_t g_submodules_count = 
+    sizeof(submod_setup) / sizeof(subModule_t);
