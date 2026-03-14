@@ -155,7 +155,7 @@ extern uint8_t g_personalityCount;                  /**< Number of personalities
 extern "C" {
 #endif
 
-const personalityDef_t *getPersonality(uint8_t index);
+// const personalityDef_t *getPersonality(uint8_t index);
 
 /**
  * @brief Retrieve a personality definition by ID.
