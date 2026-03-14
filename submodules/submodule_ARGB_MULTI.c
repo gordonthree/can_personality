@@ -1,0 +1,51 @@
+#include "submodule_types.h"
+#include "personality_table.h"
+
+extern const subModule_t submod_setup[];
+/** Pointer to the array of submodules configuration */
+const subModule_t *g_submodules_ptr = submod_setup; 
+
+/** Array containing default subModules configuration */
+const subModule_t submod_setup[] = {
+    {
+        /* Submodule 0 - ARGB LED */
+        .personalityId = PERS_ARGB_OUTPUT,
+        .config = {
+            .argb = {
+                .reserved = 0,
+                .ledCount = 1,
+                .colorOrder = ARGB_COLOR_ORDER_RGB
+            },
+        },
+        .introMsgId = DISP_ARGB_BUTTON_BACKLIGHT_ID,
+        .introMsgDLC = DISP_ARGB_BUTTON_BACKLIGHT_DLC,
+        .submod_flags = SUBMOD_FLAG_DISPLAY | SUBMOD_FLAG_OUTPUT,
+        .runTime = {
+            .last_change_ms = 0,
+            .adc_value = 0,
+            .state = 0,
+            .last_hardware_output = 0
+        }
+    },
+    {
+        /* Submodule 1 - DIGITAL INPUT */
+        .personalityId = PERS_GPIO_INPUT,
+        .config = {
+            .gpioInput = {
+                .reserved = 0,
+                .invert = 0,
+                .pull = 0
+            },
+        },
+        .introMsgId = 0,
+        .introMsgDLC = 0,
+        .submod_flags = SUBMOD_FLAG_INPUT,
+        .runTime = {
+            .last_change_ms = 0,
+            .adc_value = 0,
+            .state = 0,
+            .last_hardware_output = 0
+        }
+    }
+    // Add more submodule configurations as needed
+};
