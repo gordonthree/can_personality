@@ -9,7 +9,19 @@
 #define NODE_TYPE_MSG IFACE_ARGB_MULTI_ID
 #define NODE_TYPE_DLC IFACE_ARGB_MULTI_DLC
 
+/**
+ * @brief Pointer to the personality table.
+ *
+ * This pointer is used internally to quickly access the personality table.
+ */
 extern const personalityDef_t g_personalityTable[];
+
+/**
+ * @brief Pointer to the first element of the personality table.
+ *
+ * This pointer is a convenience wrapper around the personality table,
+ * allowing for easy iteration over the table.
+ */
 const personalityDef_t *g_personalityTable_ptr = g_personalityTable;
 
 
