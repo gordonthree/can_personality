@@ -105,7 +105,10 @@ runTime_t runTime;              /**< Producer config and current runtime state *
 } subModule_t;
 
 
-
+/** 
+ * @brief Structure to define a node
+ * 
+ */
 struct __attribute__((packed)) nodeInfo_t {                                 
 subModule_t subModule[MAX_SUB_MODULES]; /**< Sub module configurations associated with this node */
 uint32_t    nodeID;                     /**< Unique 32-bit node id number. */

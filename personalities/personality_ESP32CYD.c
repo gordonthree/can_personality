@@ -9,13 +9,7 @@
 #define NODE_TYPE_MSG IFACE_TOUCHSCREEN_TYPE_A_ID
 #define NODE_TYPE_DLC IFACE_TOUCHSCREEN_TYPE_A_DLC
 
-/** Connect the pointer to the table */
-const personalityDef_t *g_personalityTable = personalityTable;
-
-/** Number of personalities */
-uint8_t g_personalityCount =
-    sizeof(personalityTable) / sizeof(personalityDef_t);
-
+/** Define the personality table first */
 const personalityDef_t personalityTable[] = {
 
     /* ----------------------------------------------------------------------
@@ -163,3 +157,9 @@ const personalityDef_t personalityTable[] = {
     }
 };
 
+/** Connect the pointer to the table second */
+const personalityDef_t *g_personalityTable = personalityTable;
+
+/** Count number of personalities last */
+uint8_t g_personalityCount =
+    sizeof(personalityTable) / sizeof(personalityTable[0]);

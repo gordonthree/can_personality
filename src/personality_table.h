@@ -1,6 +1,7 @@
 /**
  * @file personality_table.h
  * @brief Hardware personality definitions for all submodules.
+ * @date 2026-03-15
  *
  * This file defines the firmware-side hardware mapping for each personality.
  * These definitions describe:
@@ -20,6 +21,7 @@
 #pragma once            /** Prevent multiple inclusion */
 #include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>     /**< For NULL */
 
 #include "canbus_project.h"
 #include "submodule_types.h"   /**< Sub-module type definitions */
@@ -145,8 +147,10 @@ typedef enum {
  *
  * The actual table is defined in a node-type-specific .c file.
  */
-extern const personalityDef_t *personalityTable;    /**< Active personality table */
-extern uint8_t g_personalityCount;                  /**< Number of personalities */
+extern const personalityDef_t personalityTable[];   /**< DECLARE global array for active personality table */
+extern const personalityDef_t *g_personalityTable;  /**< DECLARE global pointer to active table */
+extern uint8_t g_personalityCount;                  /**< DECLARE global counter for number of personalities */
+
 
 /* --------------------------------------------------------------------------
  * Lookup Helpers

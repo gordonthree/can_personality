@@ -9,24 +9,8 @@
 #define NODE_TYPE_MSG IFACE_ARGB_MULTI_ID
 #define NODE_TYPE_DLC IFACE_ARGB_MULTI_DLC
 
-/**
- * @brief Pointer to the personality table.
- *
- * This pointer is used internally to quickly access the personality table.
- */
-extern const personalityDef_t g_personalityTable[];
-
-/**
- * @brief Pointer to the first element of the personality table.
- *
- * This pointer is a convenience wrapper around the personality table,
- * allowing for easy iteration over the table.
- */
-const personalityDef_t *g_personalityTable_ptr = g_personalityTable;
-
-
-const personalityDef_t g_personalityTable[] = {
-
+/** Define the personality table first */
+const personalityDef_t personalityTable[] = {
     /* ----------------------------------------------------------------------
      * Submodule 0 — ARGB LED Output
      * ---------------------------------------------------------------------- */
@@ -92,6 +76,10 @@ const personalityDef_t g_personalityTable[] = {
 };
 
 
-/** Number of personalities */
+/** Connect the pointer to the table second */
+const personalityDef_t *g_personalityTable = personalityTable;
+
+/** Count number of personalities last */
 uint8_t g_personalityCount =
-    sizeof(g_personalityTable) / sizeof(personalityDef_t);
+    sizeof(personalityTable) / sizeof(personalityTable[0]);
+
