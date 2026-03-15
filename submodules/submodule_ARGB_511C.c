@@ -56,5 +56,5 @@ const subModule_t submod_setup[] = {
 };
 
 /** Number of submodules */
-uint8_t g_submodules_count = 
+const uint8_t g_submodules_count = 
     sizeof(submod_setup) / sizeof(subModule_t);

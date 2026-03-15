@@ -7,14 +7,6 @@ extern "C" {
 #include "canbus_project.h"   // for MAX_SUB_MODULES
 
 /* ===========================================================================
- *  GLOBALS 
- * ========================================================================== */
-
-extern const subModule_t *submod_setup;
-extern const uint8_t g_submodules_count;
-
-
-/* ===========================================================================
  *  TYPEDEFS
  * ========================================================================== */
 
@@ -128,6 +120,12 @@ uint8_t     subModCnt;                  /**< Sub module count for this node. */
 
 const subModule_t *getSubModuleDefaults(uint8_t index);
 
+/* ===========================================================================
+ *  GLOBALS 
+ * ========================================================================== */
+
+extern const subModule_t submod_setup[];
+extern const uint8_t g_submodules_count;
 
 #ifdef __cplusplus
 }
