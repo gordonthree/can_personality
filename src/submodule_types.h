@@ -42,8 +42,8 @@ typedef struct __attribute__((packed))
  * @brief structure to define a sub module */
 typedef struct __attribute__((packed)) subModule_t
 {
-/** Hardware personality (defines pin, capabilities, etc.) */
-uint8_t personalityId;
+uint8_t personalityId;          /**< Hardware personality, defines capabilities */
+uint8_t personalityIndex;       /**< Personality table index */
 
 /**
  * @note 24-bit user configuration (behavior-level only) */
