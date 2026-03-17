@@ -84,10 +84,23 @@ typedef struct {
     uint16_t dataMsgId;         /**< CAN ID for runtime data messages */
     uint8_t  dataMsgDlc;        /**< DLC for runtime data messages */
 
+    /* Virtual submodule introduction message */
+    uint16_t introMsgId;        /**< CAN ID for submodule introduction messages */
+    uint8_t  introMsgDlc;       /**< DLC for submodule introduction messages */
+
+    /* Virtual submodule publish rate */
+    uint16_t period_ms;         /**< Publish rate in milliseconds */
+
     /* Submodule builder flags */
     uint8_t  flags;             /**< Submodule builder flags */
 
 } personalityDef_t;
+
+typedef struct {
+    uint16_t nodeTypeMsg;                /**< An 11-bit message id that defines the node type, used for introduction, set to 0 if node not present. */
+    uint8_t  nodeTypeDLC;                /**< Data length code for the node type message. */
+    uint8_t  subModCnt;                  /**< Sub module count for this node. */
+} personalityNode_t;
 
 #define BUILDER_FLAG_NONE             (0)               /**< No flags */
 #define BUILDER_FLAG_AUTO_CONFIGURE   (1U << 0)         /**< Submodule is auto-configured */
@@ -149,7 +162,8 @@ typedef enum {
  */
 extern const personalityDef_t personalityTable[];   /**< DECLARE global array for active personality table */
 extern const personalityDef_t *g_personalityTable;  /**< DECLARE global pointer to active table */
-extern uint8_t g_personalityCount;                  /**< DECLARE global counter for number of personalities */
+extern const uint8_t g_personalityCount;                  /**< DECLARE global counter for number of personalities */
+extern const personalityNode_t g_personalityNode;   /**< DECLARE global node definition */
 
 
 /* --------------------------------------------------------------------------
