@@ -8,6 +8,7 @@
  * @date 2026-03-14
  * 
  */
+#define FORCE_REBUILD __DATE__ __TIME__
 
 #include "submodule_types.h"
 #include "personality_table.h"
@@ -29,4 +30,9 @@
  */
 #define SUBMOD_PATH(file) STR(../submodules/file.c)
 
+// #pragma message "NODE_TYPE = " STR(NODE_TYPE)
+// #pragma message "SW_MOM_PRESS_ID (before include) = " STR(SW_MOM_PRESS_ID)
+
 #include SUBMOD_PATH(SUBMOD_ID)
+
+static const char *force_rebuild_tag = FORCE_REBUILD;
