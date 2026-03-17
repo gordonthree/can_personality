@@ -5,10 +5,6 @@
 /** IMPORTANT: Not every personality will need this, some might need an stm32_defs.h */
 #include "esp32_defs.h"  
 
-/** Set the node type message */
-#define NODE_TYPE_MSG IFACE_ARGB_MULTI_ID
-#define NODE_TYPE_DLC IFACE_ARGB_MULTI_DLC
-
 /** Define the personality table first */
 const personalityDef_t personalityTable[] = {
     /* ----------------------------------------------------------------------
@@ -80,6 +76,14 @@ const personalityDef_t personalityTable[] = {
 const personalityDef_t *g_personalityTable = personalityTable;
 
 /** Count number of personalities last */
-uint8_t g_personalityCount =
+const uint8_t g_personalityCount =
     sizeof(personalityTable) / sizeof(personalityTable[0]);
 
+/** Set the node type struct
+ * @note EDIT THIS: Set the node type
+ */
+const personalityNode_t g_personalityNode = {
+    .nodeTypeMsg = IFACE_ARGB_MULTI_ID,
+    .nodeTypeDLC = IFACE_ARGB_MULTI_DLC,
+    .subModCnt   = g_personalityCount
+};

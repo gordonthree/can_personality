@@ -161,5 +161,14 @@ const personalityDef_t personalityTable[] = {
 const personalityDef_t *g_personalityTable = personalityTable;
 
 /** Count number of personalities last */
-uint8_t g_personalityCount =
+const uint8_t g_personalityCount =
     sizeof(personalityTable) / sizeof(personalityTable[0]);
+
+/** Set the node type struct
+ * @note EDIT THIS: Set the node type
+ */
+const personalityNode_t g_personalityNode = {
+    .nodeTypeMsg = IFACE_TOUCHSCREEN_TYPE_A_ID,
+    .nodeTypeDLC = IFACE_TOUCHSCREEN_TYPE_A_DLC,
+    .subModCnt   = g_personalityCount
+};

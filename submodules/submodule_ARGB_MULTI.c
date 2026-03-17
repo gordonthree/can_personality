@@ -17,15 +17,10 @@ const subModule_t submod_setup[] = {
                 .colorOrder = ARGB_COLOR_ORDER_RGB
             },
         },
-        .introMsgId = DISP_ARGB_BUTTON_BACKLIGHT_ID,
-        .introMsgDLC = DISP_ARGB_BUTTON_BACKLIGHT_DLC,
+        .introMsgId   = DISP_ARGB_BUTTON_BACKLIGHT_ID,
+        .introMsgDLC  = DISP_ARGB_BUTTON_BACKLIGHT_DLC,
         .submod_flags = SUBMOD_FLAG_DISPLAY | SUBMOD_FLAG_OUTPUT,
-        .runTime = {
-            .last_change_ms = 0,
-            .adc_value = 0,
-            .state = 0,
-            .last_hardware_output = 0
-        }
+        .runTime = {0}
     },
     {
         /* Submodule 1 - DIGITAL INPUT */
@@ -37,15 +32,10 @@ const subModule_t submod_setup[] = {
                 .pull = 0
             },
         },
-        .introMsgId = 0,
-        .introMsgDLC = 0,
+        .introMsgId   = SW_MOM_PRESS_ID,
+        .introMsgDLC  = SW_MOM_PRESS_DLC,
         .submod_flags = SUBMOD_FLAG_INPUT,
-        .runTime = {
-            .last_change_ms = 0,
-            .adc_value = 0,
-            .state = 0,
-            .last_hardware_output = 0
-        }
+        .runTime = {0}
     }
     // Add more submodule configurations as needed
 };
