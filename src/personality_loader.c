@@ -8,6 +8,7 @@
  * @date 2026-03-09
  * 
  */
+#define FORCE_REBUILD __DATE__ __TIME__
 
 #include "personality_table.h"
 
@@ -29,3 +30,5 @@
 #define PERSONALITY_PATH(file) STR(../personalities/file.c)
 
 #include PERSONALITY_PATH(PERSONALITY_ID)
+
+static const char *force_rebuild_tag = FORCE_REBUILD;
