@@ -19,15 +19,12 @@ typedef struct __attribute__((packed))
      *  RUNTIME SNAPSHOT
      * ============================ */
     uint32_t last_change_ms;        /**< Timestamp of last state change (ms) */
-    uint32_t adc_value;             /**< Last sampled ADC value */
-    uint8_t  state;                 /**< Logical digital input state */
-    uint8_t  last_hardware_output;  /**< Last value written to the hardware output pin */
+    uint32_t valueU32;              /**< Last sampled value */
 
     /* ============================
      *  PRODUCER CONFIG
      * ============================ */
     uint8_t  kind;                  /**< Producer kind (producer_kind_t) */
-    uint8_t  valueSource;           /**< Which runtime field to publish */
     uint16_t period_ms;             /**< Publish period in milliseconds (0 = disabled) */
 
     /* ============================
