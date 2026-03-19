@@ -3,7 +3,7 @@
 #include "personality_table.h"
 
 /** IMPORTANT: Not every personality will need this, some might need an stm32_defs.h */
-#include "esp32_defs.h"  
+#include "esp32_defs.h"  /**< Neeeded for GPIO pin definitions */
 
 /** Define the personality table first */
 const personalityDef_t personalityTable[] = {
