@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stddef.h> // for NULL
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -56,7 +58,7 @@ union __attribute__((packed)) {
     struct {
         uint8_t pull;        // pull-up/down/float
         uint8_t invert;      // logical inversion
-        uint8_t reserved;
+        uint8_t debounce;    // debounce delay
     } gpioInput;
 
     struct {

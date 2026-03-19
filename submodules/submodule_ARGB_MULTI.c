@@ -27,9 +27,9 @@ const subModule_t submod_setup[] = {
         .personalityId = PERS_GPIO_INPUT,
         .config = {
             .gpioInput = {
-                .reserved = 0,
-                .invert = 0,
-                .pull = 0
+                .debounce = 100,
+                .invert   = 0,
+                .pull     = 0
             },
         },
         .introMsgId   = SW_MOM_PRESS_ID,

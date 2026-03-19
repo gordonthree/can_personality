@@ -12,8 +12,8 @@ const subModule_t submod_setup[] = {
         .personalityId = PERS_ARGB_OUTPUT,
         .config = {
             .argb = {
-                .reserved = 0,
-                .ledCount = 1,
+                .reserved   = 0,
+                .ledCount   = 1,
                 .colorOrder = ARGB_COLOR_ORDER_RGB
             },
         },
@@ -27,8 +27,8 @@ const subModule_t submod_setup[] = {
         .personalityId = PERS_ARGB_OUTPUT,
         .config = {
             .argb = {
-                .reserved = 0,
-                .ledCount = 12,
+                .reserved   = 0,
+                .ledCount   = 12,
                 .colorOrder = ARGB_COLOR_ORDER_RGB
             },
         },
@@ -42,9 +42,9 @@ const subModule_t submod_setup[] = {
         .personalityId = PERS_GPIO_INPUT,
         .config = {
             .gpioInput = {
-                .reserved = 0,
-                .invert = 0,
-                .pull = 0
+                .debounce = 100,
+                .invert   = 0,
+                .pull     = 0
             },
         },
         .introMsgId = SW_MOM_PRESS_ID,
