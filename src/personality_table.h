@@ -36,15 +36,18 @@
  * These flags describe what the hardware *can* do, not what the user configures.
  * Multiple flags may be combined (e.g., CAP_OUTPUT | CAP_PWM).
  */
-#define CAP_NONE         (0x00)     /**< No capabilities */
-#define CAP_INPUT        (1U << 0)  /**< Submodule can read digital/analog input */
-#define CAP_OUTPUT       (1U << 1)  /**< Submodule can drive a GPIO output */
-#define CAP_PWM          (1U << 2)  /**< Submodule supports PWM output */
-#define CAP_STROBE       (1U << 3)  /**< Submodule supports strobe patterns */
-#define CAP_ANALOG       (1U << 4)  /**< Submodule supports ADC input */
-#define CAP_ARGB         (1U << 5)  /**< Submodule supports addressable RGB output */
-#define CAP_ANALOGRGB    (1U << 6)  /**< Submodule supports analog RGB output.  */
-#define CAP_RESERVED7    (1U << 7)  /**< Reserved for future use */
+#define CAP_NONE            (0x00)     /**< No capabilities */
+#define CAP_INPUT           (1U << 0)  /**< Submodule can read digital/analog input */
+#define CAP_OUTPUT          (1U << 1)  /**< Submodule can drive a GPIO output */
+#define CAP_PWM             (1U << 2)  /**< Submodule supports PWM output */
+#define CAP_STROBE          (1U << 3)  /**< Submodule supports strobe patterns */
+#define CAP_ANALOG          (1U << 4)  /**< Submodule supports ADC input */
+#define CAP_ARGB            (1U << 5)  /**< Submodule supports addressable RGB output */
+#define CAP_ANALOGRGB       (1U << 6)  /**< Submodule supports analog RGB output.  */
+#define CAP_HIZ_OFF         (1U << 7)  /**< Submodule output is high-impedance when off */
+#define CAP_HIZ_ON          (1U << 8)  /**< Submodule output high-impedance when on */
+#define CAP_OPEN_DRAIN      (CAP_HIZ_OFF | CAP_HIZ_ON) /**< Submodule output is open-drain */
+#define CAP_OUTPUT_INVERTED (1U << 9)  /**< Submodule output is inverted */
 
 #define NO_DATA_REPORTING 0x00
 #define NO_GPIO_ASSIGNED  0xFF
@@ -76,28 +79,28 @@
  *   - dataMsgDlc: DLC for runtime data messages
  */
 typedef struct {
-    uint8_t  personalityId;     /**< Unique personality identifier */
-    uint8_t  capabilities;      /**< CAP_* bitmask describing hardware features */
+    uint8_t   personalityId;     /**< Unique personality identifier */
+    uint16_t  capabilities;      /**< CAP_* bitmask describing hardware features */
 
     /* Hardware mapping */
-    uint8_t  gpioPin;           /**< Physical GPIO pin index */
-    uint8_t  pwmChannel;        /**< PWM channel (0xFF if unused) */
-    uint8_t  pwmTimer;          /**< PWM timer (0xFF if unused) */
-    bool     isSinkDriver;      /**< true = low-side driver, false = high-side */
+    uint8_t   gpioPin;           /**< Physical GPIO pin index */
+    uint8_t   pwmChannel;        /**< PWM channel (0xFF if unused) */
+    uint8_t   pwmTimer;          /**< PWM timer (0xFF if unused) */
+    bool      isSinkDriver;      /**< true = low-side driver, false = high-side */
 
     /* CAN data reporting */
-    uint16_t dataMsgId;         /**< CAN ID for runtime data messages */
-    uint8_t  dataMsgDlc;        /**< DLC for runtime data messages */
+    uint16_t  dataMsgId;         /**< CAN ID for runtime data messages */
+    uint8_t   dataMsgDlc;        /**< DLC for runtime data messages */
 
     /* Virtual submodule introduction message */
-    uint16_t introMsgId;        /**< CAN ID for submodule introduction messages */
-    uint8_t  introMsgDlc;       /**< DLC for submodule introduction messages */
+    uint16_t  introMsgId;        /**< CAN ID for submodule introduction messages */
+    uint8_t   introMsgDlc;       /**< DLC for submodule introduction messages */
 
     /* Virtual submodule publish rate */
-    uint16_t period_ms;         /**< Publish rate in milliseconds */
+    uint16_t  period_ms;         /**< Publish rate in milliseconds */
 
     /* Submodule builder flags */
-    uint8_t  flags;             /**< Submodule builder flags */
+    uint8_t   flags;             /**< Submodule builder flags */
 
 } personalityDef_t;
 
