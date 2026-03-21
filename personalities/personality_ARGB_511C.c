@@ -15,7 +15,7 @@ const personalityDef_t personalityTable[] = {
         .capabilities  = CAP_ARGB,                    /**< ARGB LED strip */
 
         /* Hardware mapping */
-        .gpioPin       = ARGB_511C_PIN,               /**< Pin 19 */
+        .gpioPin       = M5STAMP_CS_PIN_19,               /**< Pin 19 */
         .pwmChannel    = NO_PWM_ASSIGNED,             /**< Not PWM-capable */
         .pwmTimer      = NO_PWM_ASSIGNED,             /**< Not PWM-capable */
         .isSinkDriver  = false,                       /**< Not relevant */
@@ -35,7 +35,7 @@ const personalityDef_t personalityTable[] = {
         .capabilities  = CAP_ARGB,                     /**< ARGB LED strip */
 
         /* Hardware mapping */
-        .gpioPin       = M5STAMP_ARGB_PIN,           
+        .gpioPin       = M5STAMP_ARGB_PIN_27,           
         .pwmChannel    = NO_PWM_ASSIGNED,            
         .pwmTimer      = NO_PWM_ASSIGNED,            
         .isSinkDriver  = false,                      
@@ -57,7 +57,7 @@ const personalityDef_t personalityTable[] = {
         .capabilities  = CAP_INPUT,                   /**< Digital input */
 
         /* Hardware mapping */
-        .gpioPin       = M5STAMP_BUTTON_PIN,          /**< Pin 39 */
+        .gpioPin       = M5STAMP_BUTTON_PIN_39,          /**< Pin 39 */
         .pwmChannel    = NO_PWM_ASSIGNED,      
         .pwmTimer      = NO_PWM_ASSIGNED,                        
         .isSinkDriver  = false,                       /**< Inputs do not sink/source */
