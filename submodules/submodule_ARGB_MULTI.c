@@ -1,6 +1,7 @@
 #include "submodule_types.h"    // subModule_t
 #include "personality_table.h"  // personalityId
 // #include "can_producer.h"       // producer_flags
+// rebuild
 
 extern const subModule_t submod_setup[];
 /** Pointer to the array of submodules configuration */
@@ -32,15 +33,18 @@ const subModule_t submod_setup[] = {
             .gpioInput = {
                 .flags       = INPUT_FLAG_MODE_MOMENTARY |
                                INPUT_FLAG_PULL_UP,
-                .debounce_ms = 100,
+                .debounce_ms = INPUT_DEBOUNCE_DISABLED,
                 .reserved    = 0
             },
         },
         .introMsgId     = INPUT_DIGITAL_GPIO_ID,
         .introMsgDLC    = INPUT_DIGITAL_GPIO_DLC,
         .submod_flags   = SUBMOD_FLAG_INPUT,
-        .producer_flags = 1, // PRODUCER_FLAG_ENABLED
-        .runTime        = {0}
+        .producer_flags = PRODUCER_FLAG_ENABLED |
+                          PRODUCER_FLAG_CHANGE_ONLY,
+        .runTime        = {
+            .period_ms  = PRODUCER_RATEMS_10HZ, // 100ms
+        }
     }
     // Add more submodule configurations as needed
 };
