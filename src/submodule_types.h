@@ -56,9 +56,9 @@ union __attribute__((packed)) {
     } gpioOutput;
 
     struct {
-        uint8_t pull;        // pull-up/down/float
-        uint8_t invert;      // logical inversion
-        uint8_t debounce;    // debounce delay
+        uint8_t flags;         /**< input resistor, logic invert, input mode - see INPUT_FLAG_* */
+        uint8_t debounce_ms;   /**< input debounce delay in ms */
+        uint8_t reserved;      /**< Padding reserved */
     } gpioInput;
 
     struct {
