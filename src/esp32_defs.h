@@ -16,14 +16,17 @@
 #define CYD_LDR_PIN            (34)
 #define CYD_SPEAKER_PIN        (26)
 
-/** M5Stamp and M5PICO pin assignments */
+/** M5Stamp PICO pin assignments and constants */
 #define M5STAMP_BUTTON_COUNT   ( 1)
-#define M5STAMP_ARGB_PIN       (27)
 #define M5STAMP_ARGB_COUNT     ( 1)
-#define M5STAMP_BUTTON_PIN     (39)
 
-#define ARGB_511C_PIN          (19)
-#define ARGB_511C_CNT          (12)
+#define M5STAMP_ARGB_PIN_27    (27)
+#define M5STAMP_BUTTON_PIN_39  (39)
+#define M5STAMP_CS_PIN_19      (19)
+#define M5STAMP_SCK_PIN_18     (18)
+#define M5STAMP_DAC1_PIN_25    (25)
+#define M5STAMP_DAC2_PIN_26    (26)
+#define M5STAMP_ADC_PIN_36     (36)
 
 typedef enum {
     ESP32_PWM_CHANNEL_0 = 0,

@@ -9,13 +9,7 @@
 #define NODE_TYPE_MSG IFACE_TOUCHSCREEN_TYPE_A_ID
 #define NODE_TYPE_DLC IFACE_TOUCHSCREEN_TYPE_A_DLC
 
-/** Connect the pointer to the table */
-const personalityDef_t *g_personalityTable = personalityTable;
-
-/** Number of personalities */
-uint8_t g_personalityCount =
-    sizeof(personalityTable) / sizeof(personalityDef_t);
-
+/** Define the personality table first */
 const personalityDef_t personalityTable[] = {
 
     /* ----------------------------------------------------------------------
@@ -33,7 +27,11 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting / control */ 
         .dataMsgId     = NO_DATA_REPORTING,                        /**< No data reporting */
-        .dataMsgDlc    = NO_DATA_REPORTING                         /**< No data reporting */
+        .dataMsgDlc    = NO_DATA_REPORTING,                        /**< No data reporting */
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE | BUILDER_FLAG_DEVICE_READONLY
+
     },
 
     /* ----------------------------------------------------------------------
@@ -51,7 +49,10 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = SET_DISPLAY_BACKLIGHT_BRIGHTNESS_ID, 
-        .dataMsgDlc    = SET_DISPLAY_BACKLIGHT_BRIGHTNESS_DLC 
+        .dataMsgDlc    = SET_DISPLAY_BACKLIGHT_BRIGHTNESS_DLC,
+        
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE         
     },
         /* ----------------------------------------------------------------------
      * Submodule 2— RED LED, GPIO OUTPUT
@@ -68,7 +69,10 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = SET_LED_STRIP_BRIGHTNESS_ID, 
-        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC 
+        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC,
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
     },
     /* ----------------------------------------------------------------------
      * Submodule 3— GREEN LED, GPIO OUTPUT
@@ -85,7 +89,10 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = SET_LED_STRIP_BRIGHTNESS_ID, 
-        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC 
+        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC,
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
     },
     /* ----------------------------------------------------------------------
      * Submodule 4— BLUE LED, GPIO OUTPUT
@@ -102,7 +109,10 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = SET_LED_STRIP_BRIGHTNESS_ID, 
-        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC 
+        .dataMsgDlc    = SET_LED_STRIP_BRIGHTNESS_DLC,
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
     },
     /* ----------------------------------------------------------------------
      * Submodule 5— Light dependent resistor, ANALOG INPUT
@@ -119,7 +129,46 @@ const personalityDef_t personalityTable[] = {
 
         /* Data reporting */
         .dataMsgId     = DATA_ADC_RAW_ID, 
-        .dataMsgDlc    = DATA_ADC_RAW_DLC 
+        .dataMsgDlc    = DATA_ADC_RAW_DLC,
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
+    },
+
+    /* ----------------------------------------------------------------------
+     * Submodule 6- Speaker Analog Output
+     * ---------------------------------------------------------------------- */
+    {
+        .personalityId = PERS_ANA_OUTPUT,
+        .capabilities  = CAP_ANALOG | CAP_OUTPUT,     
+
+        /* Hardware mapping */
+        .gpioPin       = CYD_SPEAKER_PIN,           
+        .pwmChannel    = NO_PWM_ASSIGNED,              
+        .pwmTimer      = NO_PWM_ASSIGNED,                
+        .isSinkDriver  = false,
+
+        /* Data reporting */
+        .dataMsgId     = DATA_ADC_RAW_ID, 
+        .dataMsgDlc    = DATA_ADC_RAW_DLC,
+
+        /* Submodule builder flags */
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE
     }
 };
 
+/** Connect the pointer to the table second */
+const personalityDef_t *g_personalityTable = personalityTable;
+
+/** Count number of personalities last */
+const uint8_t g_personalityCount =
+    sizeof(personalityTable) / sizeof(personalityTable[0]);
+
+/** Set the node type struct
+ * @note EDIT THIS: Set the node type
+ */
+const personalityNode_t g_personalityNode = {
+    .nodeTypeMsg = IFACE_TOUCHSCREEN_TYPE_A_ID,
+    .nodeTypeDLC = IFACE_TOUCHSCREEN_TYPE_A_DLC,
+    .subModCnt   = g_personalityCount
+};
