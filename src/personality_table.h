@@ -50,6 +50,8 @@
 #define NO_GPIO_ASSIGNED  0xFF
 #define NO_PWM_ASSIGNED   0xFF
 
+#define M5STAMP_PIN_SCK  (18U)
+
 /* --------------------------------------------------------------------------
  * Personality Definition Structure
  * -------------------------------------------------------------------------- */
@@ -174,15 +176,7 @@ extern const personalityNode_t g_personalityNode;   /**< DECLARE global node def
 extern "C" {
 #endif
 
-// const personalityDef_t *getPersonality(uint8_t index);
 
-/**
- * @brief Retrieve a personality definition by ID.
- *
- * @param personalityId The ID to look up.
- * @return Pointer to personalityDef_t, or NULL if not found.
- */
-const personalityDef_t *getPersonality(uint8_t personalityId);
 
 #ifdef __cplusplus
 }
