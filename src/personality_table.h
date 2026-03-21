@@ -21,7 +21,7 @@
 #pragma once            /** Prevent multiple inclusion */
 #include <stdint.h>
 #include <stdbool.h>
-#include <stddef.h>     /**< For NULL */
+#include <stddef.h> /* for NULL */
 
 #include "canbus_project.h"
 #include "submodule_types.h"   /**< Sub-module type definitions */
