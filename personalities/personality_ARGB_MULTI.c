@@ -37,15 +37,15 @@ const personalityDef_t personalityTable[] = {
         .personalityId = PERS_GPIO_INPUT,
         .capabilities  = CAP_INPUT,                   /**< Digital input */
 
-        /* Hardware mapping */
+        /* Hardware mapping */   
         .gpioPin       = M5STAMP_BUTTON_PIN,          /**< Pin 39 */
-        .pwmChannel    = NO_PWM_ASSIGNED,                        /**< Not PWM-capable */
-        .pwmTimer      = NO_PWM_ASSIGNED,                        /**< Not PWM-capable */
+        .pwmChannel    = NO_PWM_ASSIGNED,             /**< Not PWM-capable */
+        .pwmTimer      = NO_PWM_ASSIGNED,             /**< Not PWM-capable */
         .isSinkDriver  = false,                       /**< Inputs do not sink/source */
 
         /* Data reporting */
-        .dataMsgId     = DATA_BUTTON_DOWN_ID,                       /**< INPUT_DIGITAL_GPIO data */
-        .dataMsgDlc    = DATA_BUTTON_DOWN_DLC,                      /**< Payload size */
+        .dataMsgId     = DATA_BUTTON_DOWN_ID,      
+        .dataMsgDlc    = DATA_BUTTON_DOWN_DLC,     
 
         /* Submodule builder flags */
         .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
