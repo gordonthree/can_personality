@@ -1,5 +1,6 @@
-#include "submodule_types.h"
-#include "personality_table.h"
+#include "submodule_types.h"    // subModule_t
+#include "personality_table.h"  // personalityId
+// #include "can_producer.h"       // producer_flags
 
 extern const subModule_t submod_setup[];
 /** Pointer to the array of submodules configuration */
@@ -30,8 +31,8 @@ const subModule_t submod_setup[] = {
                 .param2 = LEDC_13BIT_100PCT, /* 100% duty cycle */
             },
         },
-        .introMsgId = DISP_ANALOG_BACKLIGHT_ID,
-        .introMsgDLC = DISP_ANALOG_BACKLIGHT_DLC,
+        .introMsgId   = DISP_ANALOG_BACKLIGHT_ID,
+        .introMsgDLC  = DISP_ANALOG_BACKLIGHT_DLC,
         .submod_flags = SUBMOD_FLAG_DISPLAY |
                         SUBMOD_FLAG_OUTPUT,
         .runTime = {0}
