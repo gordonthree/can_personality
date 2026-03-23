@@ -50,6 +50,7 @@
 #define CAP_HIZ_ON          (1U << 8)  /**< Submodule output high-impedance when on */
 #define CAP_OPEN_DRAIN      (CAP_HIZ_OFF | CAP_HIZ_ON) /**< Submodule output is open-drain */
 #define CAP_OUTPUT_INVERTED (1U << 9)  /**< Submodule output is inverted */
+#define CAP_NETWORK         (1U << 10) /**< Submodule is a CAN network node */
 
 #define NO_DATA_REPORTING 0x00
 #define NO_GPIO_ASSIGNED  0xFF
@@ -138,6 +139,9 @@ typedef enum {
     /* Input personalities */
     PERS_GPIO_INPUT             = 10,        /**< Digital GPIO input */
     PERS_ANALOG_INPUT           = 11,        /**< ADC input */
+
+    /* Network personalities */
+    NET_ARGB_REMOTE             = 20,       /**< Networked addressable RGB LED strip (NeoPixelBus) */
 
     /* Virtual personalities */
     VIRT_FREE_HEAP              = 0xC0,      /**< Free heap size (bytes) */
