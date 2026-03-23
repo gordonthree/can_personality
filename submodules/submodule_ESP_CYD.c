@@ -28,7 +28,7 @@ const subModule_t submod_setup[] = {
             .gpioOutput = {
                 .mode = OUT_MODE_PWM,
                 .param1 = 100, /* 1khz PWM frequency in 10Hz increments */
-                .param2 = LEDC_13BIT_100PCT, /* 100% duty cycle */
+                .param2 = 255, /* TODO: FIX ME - 100% duty cycle */
             },
         },
         .introMsgId   = DISP_ANALOG_BACKLIGHT_ID,
