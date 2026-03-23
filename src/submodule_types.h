@@ -101,6 +101,12 @@ uint8_t producer_flags;         /**< PRODUCER_FLAG_* */
 
 /* Producer configuration and runtime data */
 runTime_t runTime;              /**< Producer config and current runtime state */
+
+/* Network node information */
+uint32_t networkNodeId;   /**< Remote node id */
+uint32_t lastSeen;        /**< Last time message received from node */
+uint8_t  netConfig[8];    /**< Network configuration parameters */
+
 } subModule_t;
 
 
