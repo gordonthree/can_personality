@@ -51,6 +51,7 @@
 #define CAP_OPEN_DRAIN      (CAP_HIZ_OFF | CAP_HIZ_ON) /**< Submodule output is open-drain */
 #define CAP_OUTPUT_INVERTED (1U << 9)  /**< Submodule output is inverted */
 #define CAP_NETWORK         (1U << 10) /**< Submodule is a CAN network node */
+#define CAP_USER_DEFINED    (1U << 11) /**< Submodule is user-defined */
 
 #define NO_DATA_REPORTING 0x00
 #define NO_GPIO_ASSIGNED  0xFF
@@ -119,6 +120,8 @@ typedef struct {
 #define BUILDER_FLAG_DEVICE_HIDDEN    (1U << 2)         /**< Submodule is hidden from user interface */
 #define BUILDER_FLAG_DEVICE_DISABLED  (1U << 3)         /**< Submodule is disabled */
 #define BUILDER_FLAG_DEVICE_READONLY  (1U << 4)         /**< Submodule is read-only */
+#define BUILDER_FLAG_IS_NETWORK_NODE  (1U << 5)         /**< Submodule is a CAN network node */
+#define BUILDER_FLAG_USER_DEFINED     (1U << 6)         /**< Submodule is user-defined */
 
 /**
  * @brief Enumerates all hardware personality IDs.
@@ -152,9 +155,10 @@ typedef enum {
 
     /* System personalities */
     SYS_TOUCH_LCD                = 0xF0,     /**< Touchscreen (e.g., CYD / XPT2046) */
-    SYS_NON_TOUCH_LCD            = 0xF1      /**< Generic display (e.g., SSD1306) */
+    SYS_NON_TOUCH_LCD            = 0xF1,     /**< Generic display (e.g., SSD1306) */
 
-    /* Add more as needed */
+    /* Add more as needed above this line */
+    PERSONALITY_MAX                          /**< Maximum number of personalities */
 } personalityId_t;
 
 
@@ -175,8 +179,9 @@ typedef enum {
  * The actual table is defined in a node-type-specific .c file.
  */
 extern const personalityDef_t personalityTable[];   /**< DECLARE global array for active personality table */
+extern const personalityDef_t templateTable[];      /**< DECLARE global array for template table */
 extern const personalityDef_t *g_personalityTable;  /**< DECLARE global pointer to active table */
-extern const uint8_t g_personalityCount;                  /**< DECLARE global counter for number of personalities */
+extern const uint8_t g_personalityCount;            /**< DECLARE global counter for number of personalities */
 extern const personalityNode_t g_personalityNode;   /**< DECLARE global node definition */
 
 
