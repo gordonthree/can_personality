@@ -79,10 +79,10 @@ const personalityDef_t personalityTable[] = {
     }    
 };
 
-/** Connect the pointer to the table second */
+/** Connect the pointer to the table */
 const personalityDef_t *g_personalityTable = personalityTable;
 
-/** Count number of personalities last */
+/** Count number of personalities */
 const uint8_t g_personalityCount =
     sizeof(personalityTable) / sizeof(personalityTable[0]);
 
