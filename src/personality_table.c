@@ -1,4 +1,8 @@
-/* Current version */
 #include "personality_table.h"
 
-// Nothing here
+/* ============================================================================ */
+/* Define Global Variables                                                           
+/* ============================================================================ */
+
+personalityDef_t runtimePersonalityTable[MAX_RUNTIME_PERSONALITIES] = {0};
+uint8_t runtimePersonalityCount = 0;  

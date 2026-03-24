@@ -184,6 +184,10 @@ extern const personalityDef_t *g_personalityTable;  /**< DECLARE global pointer 
 extern const uint8_t g_personalityCount;            /**< DECLARE global counter for number of personalities */
 extern const personalityNode_t g_personalityNode;   /**< DECLARE global node definition */
 
+/** Runtime personalities, contains a copy of static personalities plus any added at runtime */
+extern personalityDef_t runtimePersonalityTable[];
+extern uint8_t runtimePersonalityCount;         /**< Number of runtime personalities */
+
 
 /* --------------------------------------------------------------------------
  * Lookup Helpers
