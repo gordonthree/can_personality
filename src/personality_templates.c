@@ -14,3 +14,6 @@ const personalityDef_t templateTable[] = {
     }
 };
 
+/** Count number of personalities */
+const uint8_t g_TemplateCount =
+    sizeof(templateTable) / sizeof(templateTable[0]);

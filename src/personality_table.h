@@ -24,6 +24,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h> /* for NULL */
+#include <string.h> /* for memset */
 
 #include "canbus_project.h"
 #include "submodule_types.h"   /**< Sub-module type definitions */
@@ -116,7 +117,7 @@ typedef struct {
 
 #define BUILDER_FLAG_NONE             (0)               /**< No flags */
 #define BUILDER_FLAG_AUTO_CONFIGURE   (1U << 0)         /**< Submodule is auto-configured */
-#define BUILDER_FLAG_IS_VIRTUAL       (1U << 1)         /**< Submodule is a virtual device */
+#define BUILDER_FLAG_IS_INTERNAL      (1U << 1)         /**< Submodule is internal */
 #define BUILDER_FLAG_DEVICE_HIDDEN    (1U << 2)         /**< Submodule is hidden from user interface */
 #define BUILDER_FLAG_DEVICE_DISABLED  (1U << 3)         /**< Submodule is disabled */
 #define BUILDER_FLAG_DEVICE_READONLY  (1U << 4)         /**< Submodule is read-only */
@@ -134,17 +135,17 @@ typedef enum {
     PERS_NONE = 0,              /**< Unconfigured / invalid */
 
     /* Output personalities */
-    PERS_GPIO_OUTPUT            = 1,       /**< Generic GPIO output (toggle/momentary/strobe/PWM) */
-    PERS_ARGB_OUTPUT            = 2,       /**< Addressable ARGB LED strip (NeoPixelBus) */
-    PERS_RGBW_OUTPUT            = 3,       /**< Analog RGBW LED strip (GPIO + PWM) */
-    PERS_ANA_OUTPUT             = 4,       /**< Generic analog output (DAC) */
+    PERS_GPIO_OUTPUT            = 0x01,      /**< Generic GPIO output (toggle/momentary/strobe/PWM) */
+    PERS_ARGB_OUTPUT            = 0x02,      /**< Addressable ARGB LED strip (NeoPixelBus) */
+    PERS_RGBW_OUTPUT            = 0x03,      /**< Analog RGBW LED strip (GPIO + PWM) */
+    PERS_ANA_OUTPUT             = 0x04,      /**< Generic analog output (DAC) */
 
     /* Input personalities */
-    PERS_GPIO_INPUT             = 10,        /**< Digital GPIO input */
-    PERS_ANALOG_INPUT           = 11,        /**< ADC input */
+    PERS_GPIO_INPUT             = 0x0A,      /**< Digital GPIO input */
+    PERS_ANALOG_INPUT           = 0x0B,      /**< ADC input */
 
     /* Network personalities */
-    NET_ARGB_REMOTE             = 20,       /**< Networked addressable RGB LED strip (NeoPixelBus) */
+    NET_ARGB_REMOTE             = 0x14,      /**< Networked addressable RGB LED strip (NeoPixelBus) */
 
     /* Virtual personalities */
     VIRT_FREE_HEAP              = 0xC0,      /**< Free heap size (bytes) */
@@ -178,10 +179,16 @@ typedef enum {
  *
  * The actual table is defined in a node-type-specific .c file.
  */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern const personalityDef_t personalityTable[];   /**< DECLARE global array for active personality table */
 extern const personalityDef_t templateTable[];      /**< DECLARE global array for template table */
 extern const personalityDef_t *g_personalityTable;  /**< DECLARE global pointer to active table */
 extern const uint8_t g_personalityCount;            /**< DECLARE global counter for number of personalities */
+extern const uint8_t g_TemplateCount;               /**< DECLARE global counter for number of template personalities */
 extern const personalityNode_t g_personalityNode;   /**< DECLARE global node definition */
 
 /** Runtime personalities, contains a copy of static personalities plus any added at runtime */
@@ -190,12 +197,10 @@ extern uint8_t runtimePersonalityCount;         /**< Number of runtime personali
 
 
 /* --------------------------------------------------------------------------
- * Lookup Helpers
+ * Public Helpers
  * -------------------------------------------------------------------------- */
+int initRuntimePersonalityTable(void);
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 
 

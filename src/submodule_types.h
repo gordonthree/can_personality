@@ -105,7 +105,7 @@ runTime_t runTime;              /**< Producer config and current runtime state *
 /* Network node information */
 uint32_t networkNodeId;   /**< Remote node id */
 uint32_t lastSeen;        /**< Last time message received from node */
-uint8_t  netConfig[8];    /**< Network configuration parameters */
+uint8_t  netConfig[4];    /**< Network configuration parameters */
 
 } subModule_t;
 

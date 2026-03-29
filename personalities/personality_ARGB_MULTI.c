@@ -74,7 +74,7 @@ const personalityDef_t personalityTable[] = {
         .period_ms     = 30000,
 
         /* Submodule builder flags */
-        .flags         = BUILDER_FLAG_AUTO_CONFIGURE | BUILDER_FLAG_IS_VIRTUAL
+        .flags         = BUILDER_FLAG_AUTO_CONFIGURE | BUILDER_FLAG_IS_INTERNAL
 
     }    
 };
