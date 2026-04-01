@@ -84,28 +84,28 @@
  *   - dataMsgDlc: DLC for runtime data messages
  */
 typedef struct {
-    uint8_t   personalityId;     /**< Unique personality identifier */
-    uint16_t  capabilities;      /**< CAP_* bitmask describing hardware features */
+    uint8_t            personalityId;     /**< Unique personality identifier */
+    uint16_t           capabilities;      /**< CAP_* bitmask describing hardware features */
 
     /* Hardware mapping */
-    uint8_t   gpioPin;           /**< Physical GPIO pin index */
-    uint8_t   pwmChannel;        /**< PWM channel (0xFF if unused) */
-    uint8_t   pwmTimer;          /**< PWM timer (0xFF if unused) */
-    bool      isSinkDriver;      /**< true = low-side driver, false = high-side */
+    uint8_t            gpioPin;           /**< Physical GPIO pin index */
+    uint8_t            pwmChannel;        /**< PWM channel (0xFF if unused) */
+    uint8_t            pwmTimer;          /**< PWM timer (0xFF if unused) */
+    bool               isSinkDriver;      /**< true = low-side driver, false = high-side */
 
     /* CAN data reporting */
-    uint16_t  dataMsgId;         /**< CAN ID for runtime data messages */
-    uint8_t   dataMsgDlc;        /**< DLC for runtime data messages */
+    uint16_t           dataMsgId;         /**< CAN ID for runtime data messages */
+    uint8_t            dataMsgDlc;        /**< DLC for runtime data messages */
 
-    /* Virtual submodule introduction message */
-    uint16_t  introMsgId;        /**< CAN ID for submodule introduction messages */
-    uint8_t   introMsgDlc;       /**< DLC for submodule introduction messages */
+    /* Internal submodule introduction message */
+    uint16_t           introMsgId;        /**< CAN ID for submodule introduction messages */
+    uint8_t            introMsgDlc;       /**< DLC for submodule introduction messages */
 
-    /* Virtual submodule publish rate */
-    uint16_t  period_ms;         /**< Publish rate in milliseconds */
+    /* Internal submodule publish rate */
+    producer_period_t  period_ms;         /**< Publish rate in milliseconds */
 
     /* Submodule builder flags */
-    uint8_t   flags;             /**< Submodule builder flags */
+    uint8_t            flags;             /**< Submodule builder flags */
 
 } personalityDef_t;
 

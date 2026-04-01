@@ -95,10 +95,13 @@ const subModule_t submod_setup[] = {
                 .reserved2 = 0  /* Padding - reserved */
             },
         },
-        .introMsgId = DATA_ADC_RAW_ID,
-        .introMsgDLC = DATA_ADC_RAW_DLC,
+        .introMsgId   = DATA_ADC_RAW_ID,
+        .introMsgDLC  = DATA_ADC_RAW_DLC,
         .submod_flags = SUBMOD_FLAG_INPUT,
-        .runTime = {0}
+        .producer_period_ms  = PRODUCER_PERIOD_10000MS, 
+        .producer_kind       = PRODUCER_KIND_PERIODIC |
+                               PRODUCER_FLAG_ACTIVE |
+                               PRODUCER_FLAG_PUBLISH_ENABLED
     }, {
         /* Submodule 6 - Analog speaker output */
         .personalityId = PERS_ANA_OUTPUT,
@@ -109,8 +112,8 @@ const subModule_t submod_setup[] = {
                 .param2 = 0  /* TODO DAC stuff */
             },
         },
-        .introMsgId = DATA_ADC_RAW_ID,
-        .introMsgDLC = DATA_ADC_RAW_DLC,
+        .introMsgId   = DATA_ADC_RAW_ID,
+        .introMsgDLC  = DATA_ADC_RAW_DLC,
         .submod_flags = SUBMOD_FLAG_OUTPUT,
         .runTime = {0}
     }

@@ -22,13 +22,7 @@ typedef struct __attribute__((packed))
      * ============================ */
     uint32_t last_change_ms;        /**< Timestamp of last state change (ms) */
     uint32_t valueU32;              /**< Last sampled value */
-
-    /* ============================
-     *  PRODUCER CONFIG
-     * ============================ */
-    uint8_t  kind;                  /**< Producer kind (producer_kind_t) */
-    uint16_t period_ms;             /**< Publish period in milliseconds (0 = disabled) */
-
+    
     /* ============================
      *  PRODUCER RUNTIME
      * ============================ */
@@ -36,6 +30,53 @@ typedef struct __attribute__((packed))
 
 } runTime_t;
 
+/** Common industrial / automotive publish rates, in milliseconds */
+typedef uint16_t producer_period_t; 
+
+/** Constants for producer_period_t */
+enum PRODUCER_PERIOD_CONSTANTS
+{
+    PRODUCER_PERIOD_DISABLED = 0,     /**< 0: Task is disabled */
+    PRODUCER_PERIOD_10MS     = 10,    /**< 10: 10ms interval */
+    PRODUCER_PERIOD_20MS     = 20,    /**< 20: 20ms interval */
+    PRODUCER_PERIOD_50MS     = 50,    /**< 50: 50ms interval */
+    PRODUCER_PERIOD_100MS    = 100,   /**< 100: 100ms interval */
+    PRODUCER_PERIOD_250MS    = 250,   /**< 250: 250ms interval */
+    PRODUCER_PERIOD_500MS    = 500,   /**< 500: 500ms interval */
+    PRODUCER_PERIOD_1000MS   = 1000,  /**< 1000: 1000ms interval */
+    PRODUCER_PERIOD_10000MS  = 10000, /**< 10000: 10000ms interval */
+    PRODUCER_PERIOD_30000MS  = 30000  /**< 30000: 30000ms interval */
+};
+
+/* === Producer Constants === */
+#define PRODUCER_FLAG_NONE            (0x00U)  /**< No producer flags set */
+#define PRODUCER_FLAG_ACTIVE          (0x01U)  /**< Submodule participates in producer logic */
+#define PRODUCER_FLAG_CHANGE_ONLY     (0x02U)  /**< Publish only on value change */
+#define PRODUCER_FLAG_PUBLISH_ENABLED (0x04U)  /**< Publishing allowed */
+#define PRODUCER_FLAG_RESERVED2       (0x08U)
+
+
+#define DEFAULT_PUBLISH_RATE       (1000U)    /**< Default publish period in ms (1 Hz) */
+// #define PRODUCER_PUBLISH_DISABLED  (0U)       /**< Publish period disabled */
+
+// #define PRODUCER_RATEMS_1HZ        (1000U)    /**< Publish period 1000ms 1 Hz */
+// #define PRODUCER_RATEMS_10HZ       (100U)     /**< Publish period 100ms 10 Hz */
+// #define PRODUCER_RATEMS_100HZ      (10U)      /**< Publish period 10ms 100 Hz */
+
+/**
+ * @brief Producer behavioral type.
+ */
+typedef enum
+{
+    PRODUCER_KIND_NONE     = 0,  /**< No producer / disabled */
+    PRODUCER_KIND_DIGITAL,       /**< Digital producer (0/1) */
+    PRODUCER_KIND_ANALOG,        /**< Analog producer (0–4095, etc.) */
+    PRODUCER_KIND_COUNTER,       /**< Counter / incrementing producer */
+    PRODUCER_KIND_TIMER,         /**< Timer / decrementing producer */
+    PRODUCER_KIND_PERIODIC,      /**< Periodic value producer */
+    PRODUCER_KIND_CUSTOM         /**< User-defined or extended behavior */
+
+} producer_kind_t;
 
 /** 
  * @brief structure to define a sub module */
@@ -91,21 +132,23 @@ union __attribute__((packed)) {
 } config;
 
 /* User-level semantic identity */
-uint16_t introMsgId;
-uint8_t  introMsgDLC;
+uint16_t             introMsgId;
+uint8_t              introMsgDLC;
 
 /* Per-function flags (bitfield) */
-uint8_t submod_flags;           /**< SUBMOD_FLAG_* */
-uint8_t router_flags;           /**< ROUTER_FLAG_* */
-uint8_t producer_flags;         /**< PRODUCER_FLAG_* */
+uint8_t              submod_flags;         /**< SUBMOD_FLAG_* */
+uint8_t              router_flags;         /**< ROUTER_FLAG_* */
+uint8_t              producer_flags;       /**< PRODUCER_FLAG_* */
 
 /* Producer configuration and runtime data */
-runTime_t runTime;              /**< Producer config and current runtime state */
+runTime_t            runTime;              /**< Producer runtime state */
+producer_period_t    producer_period_ms;   /**< Producer publish period in ms */
+uint8_t              producer_kind;        /**< Producer kind (obsolete producer_kind_t) */
 
 /* Network node information */
-uint32_t networkNodeId;   /**< Remote node id */
-uint32_t lastSeen;        /**< Last time message received from node */
-uint8_t  netConfig[4];    /**< Network configuration parameters */
+uint32_t             networkNodeId;        /**< Remote node id */
+uint32_t             lastSeen;             /**< Last time message received from node */
+uint8_t              netConfig[4];         /**< Network configuration parameters */
 
 } subModule_t;
 

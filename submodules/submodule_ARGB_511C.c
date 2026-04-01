@@ -51,14 +51,15 @@ const subModule_t submod_setup[] = {
                 .reserved    = 0
             },
         },
-        .introMsgId     = INPUT_DIGITAL_GPIO_ID,
-        .introMsgDLC    = INPUT_DIGITAL_GPIO_DLC,
-        .submod_flags   = SUBMOD_FLAG_INPUT,
-        .producer_flags = PRODUCER_FLAG_ENABLED |
-                          PRODUCER_FLAG_CHANGE_ONLY,
-        .runTime        = {
-            .period_ms  = 100, // PRODUCER_RATEMS_10HZ
-        }
+        .introMsgId          = INPUT_DIGITAL_GPIO_ID,
+        .introMsgDLC         = INPUT_DIGITAL_GPIO_DLC,
+        .submod_flags        = SUBMOD_FLAG_INPUT,
+        .producer_flags      = PRODUCER_FLAG_ACTIVE |
+                               PRODUCER_FLAG_PUBLISH_ENABLED |
+                               PRODUCER_FLAG_CHANGE_ONLY,
+        .producer_period_ms  =  100, // PRODUCER_RATEMS_10HZ
+        .producer_kind       = PRODUCER_KIND_PERIODIC,
+        
     }
     // Add more submodule configurations as needed
 };
