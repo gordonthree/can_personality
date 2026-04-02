@@ -33,17 +33,17 @@ const subModule_t submod_setup[] = {
             .gpioInput = {
                 .flags       = INPUT_FLAG_MODE_MOMENTARY |
                                INPUT_FLAG_INVERT |
-                               INPUT_FLAG_PULL_UP,
+                               INPUT_FLAG_PULL_FLOAT,
                 .debounce_ms = INPUT_DEBOUNCE_DISABLED,
                 .reserved    = 0
             },
         },
-        .introMsgId     = INPUT_DIGITAL_GPIO_ID,
-        .introMsgDLC    = INPUT_DIGITAL_GPIO_DLC,
-        .submod_flags   = SUBMOD_FLAG_INPUT,
-        .producer_flags = PRODUCER_FLAG_ACTIVE |
-                          PRODUCER_FLAG_PUBLISH_ENABLED |
-                          PRODUCER_FLAG_CHANGE_ONLY,
+        .introMsgId          = INPUT_DIGITAL_GPIO_ID,
+        .introMsgDLC         = INPUT_DIGITAL_GPIO_DLC,
+        .submod_flags        = SUBMOD_FLAG_INPUT,
+        .producer_flags      = PRODUCER_FLAG_ACTIVE |
+                               PRODUCER_FLAG_PUBLISH_ENABLED |
+                               PRODUCER_FLAG_CHANGE_ONLY,
         .producer_period_ms  = 100, // PRODUCER_RATEMS_10HZ
         .producer_kind       = PRODUCER_KIND_PERIODIC,
     }

@@ -46,7 +46,7 @@ const subModule_t submod_setup[] = {
             .gpioInput = {
                 .flags       = INPUT_FLAG_MODE_TOGGLE |
                                INPUT_FLAG_INVERT |
-                               INPUT_FLAG_PULL_UP,
+                               INPUT_FLAG_PULL_FLOAT,
                 .debounce_ms = INPUT_DEBOUNCE_DISABLED,
                 .reserved    = 0
             },
