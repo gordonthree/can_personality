@@ -135,30 +135,43 @@ typedef enum {
     PERS_NONE = 0,              /**< Unconfigured / invalid */
 
     /* Output personalities */
-    PERS_GPIO_OUTPUT            = 0x01,      /**< Generic GPIO output (toggle/momentary/strobe/PWM) */
-    PERS_ARGB_OUTPUT            = 0x02,      /**< Addressable ARGB LED strip (NeoPixelBus) */
-    PERS_RGBW_OUTPUT            = 0x03,      /**< Analog RGBW LED strip (GPIO + PWM) */
-    PERS_ANA_OUTPUT             = 0x04,      /**< Generic analog output (DAC) */
+    PERS_GPIO_OUTPUT                = 0x01,      /**< Generic GPIO output (toggle/momentary/strobe/PWM) */
+    PERS_ARGB_OUTPUT                = 0x02,      /**< Addressable ARGB LED strip (NeoPixelBus) */
+    PERS_RGBW_OUTPUT                = 0x03,      /**< Analog RGBW LED strip (GPIO + PWM) */
+    PERS_ANA_OUTPUT                 = 0x04,      /**< Generic analog output (DAC) */
 
     /* Input personalities */
-    PERS_GPIO_INPUT             = 0x0A,      /**< Digital GPIO input */
-    PERS_ANALOG_INPUT           = 0x0B,      /**< ADC input */
+    PERS_GPIO_INPUT                 = 0x0A,      /**< Digital GPIO input */
+    PERS_ANALOG_INPUT               = 0x0B,      /**< ADC input */
 
     /* Network personalities */
-    NET_ARGB_REMOTE             = 0x14,      /**< Networked addressable RGB LED strip (NeoPixelBus) */
+    NET_ARGB_REMOTE                 = 0x14,      /**< Networked addressable RGB LED strip (NeoPixelBus) */
 
     /* Virtual personalities */
-    VIRT_FREE_HEAP              = 0xC0,      /**< Free heap size (bytes) */
-    VIRT_WIFI_RSSI              = 0xC1,      /**< WiFi RSSI (dBm) */
-    VIRT_RTOS_HIGHWATERMARK     = 0xC2,      /**< FreeRTOS high watermark (bytes) */
-    VIRT_INTERNAL_TEMPERATURE   = 0xC3,      /**< Internal temperature (C) */
-    VIRT_VREF_VOLTAGE           = 0xC4,      /**< Internal voltage reference (Vref) voltage (V) */
+    INTERNAL_FREE_HEAP              = 0xC0,      /**< Free heap size (bytes) */
+    INTERNAL_WIFI_RSSI              = 0xC1,      /**< WiFi RSSI (dBm) */
+    INTERNAL_RTOS_HIGHWATERMARK     = 0xC2,      /**< FreeRTOS high watermark (bytes) */
+    INTERNAL_INTERNAL_TEMPERATURE   = 0xC3,      /**< Internal temperature (C) */
+    INTERNAL_VREF_VOLTAGE           = 0xC4,      /**< Internal voltage reference (Vref) voltage (V) */
+    INTERNAL_RESET_REASON           = 0xC5,      /**< Reset reason */
+    INTERNAL_BROWNOUT_STATUS        = 0xC6,      /**< Reset reason string */
+    INTERNAL_UPTIME_MS              = 0xC7,      /**< Uptime (ms) */
+    INTERNAL_WIFI_CHANNEL           = 0xC8,      /**< WiFi channel */
+    INTERNAL_WIFI_PHY_RATE          = 0xC9,      /**< WiFi PHY rate */
+    INTERNAL_FLASH_SIZE             = 0xCA,      /**< Flash size (bytes) */
+    INTERNAL_CPU_FREQ               = 0xCB,      /**< CPU frequency (MHz) */
+    INTERNAL_MIN_FREE_HEAP          = 0xCC,      /**< Minimum free heap size (bytes) */
+    INTERNAL_MAX_FREE_HEAP          = 0xCD,      /**< Maximum free heap size (bytes) */
+    INTERNAL_CAN_ERROR_COUNTERS     = 0xCE,      /**< CAN error counters */
+    INTERNAL_CAN_BUS_STATE          = 0xCF,      /**< CAN bus state */
+    INTERNAL_FIRMWARE_VERSION       = 0xD0,      /**< Firmware version */
+    INTERNAL_OTA_PARTITION_INFO     = 0xD1,      /**< OTA partition info */
 
     /* System personalities */
-    SYS_TOUCH_LCD                = 0xF0,     /**< Touchscreen (e.g., CYD / XPT2046) */
-    SYS_NON_TOUCH_LCD            = 0xF1,     /**< Generic display (e.g., SSD1306) */
+    SYS_TOUCH_LCD                   = 0xF0,     /**< Touchscreen (e.g., CYD / XPT2046) */
+    SYS_NON_TOUCH_LCD               = 0xF1,     /**< Generic display (e.g., SSD1306) */
 
-    /* Add more as needed above this line */
+    /* Add more as needed before this line */
     PERSONALITY_MAX                          /**< Maximum number of personalities */
 } personalityId_t;
 
@@ -201,8 +214,8 @@ extern uint8_t runtimePersonalityCount;         /**< Number of runtime personali
  * -------------------------------------------------------------------------- */
 int initRuntimePersonalityTable(void);
 
-
-
+personalityDef_t getPersonalityTemplate(uint8_t personalityId);
+int getFreePersonalitySlot(void);
 
 #ifdef __cplusplus
 }
