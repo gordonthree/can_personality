@@ -43,7 +43,10 @@ enum PRODUCER_PERIOD_CONSTANTS
     PRODUCER_PERIOD_100MS    = 100,   /**< 100: 100ms interval */
     PRODUCER_PERIOD_250MS    = 250,   /**< 250: 250ms interval */
     PRODUCER_PERIOD_500MS    = 500,   /**< 500: 500ms interval */
+    PRODUCER_PERIOD_ONCE     = 999,   /**< 999: Special value - Publish once */
     PRODUCER_PERIOD_1000MS   = 1000,  /**< 1000: 1000ms interval */
+    PRODUCER_PERIOD_2000MS   = 2000,  /**< 2000: 2000ms interval */
+    PRODUCER_PERIOD_5000MS   = 5000,  /**< 5000: 5000ms interval */
     PRODUCER_PERIOD_10000MS  = 10000, /**< 10000: 10000ms interval */
     PRODUCER_PERIOD_30000MS  = 30000  /**< 30000: 30000ms interval */
 };
