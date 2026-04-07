@@ -3,6 +3,19 @@
 
 const personalityDef_t templateTable[] = {
     {
+    /* dummy entry - do not use */
+    .personalityId      = PERS_NONE,
+    .capabilities       = CAP_NONE,
+    .gpioPin            = NO_GPIO_ASSIGNED,
+    .pwmChannel         = NO_PWM_ASSIGNED,
+    .pwmTimer           = NO_PWM_ASSIGNED,
+    .isSinkDriver       = false,
+    .dataMsgId          = 0x999,
+    .dataMsgDlc         = 0x99,   
+    .period_ms          = PRODUCER_PERIOD_DISABLED,
+    .flags              = BUILDER_FLAG_NONE
+    },
+    {
     .personalityId      = NET_ARGB_REMOTE,
     .capabilities       = CAP_NETWORK | CAP_ARGB,
     .gpioPin            = NO_GPIO_ASSIGNED,
@@ -218,7 +231,7 @@ const uint8_t g_TemplateCount =
  * @param personalityId uint8_t identifier of the personality to retrieve.
  * @return personalityDef_t struct associated with the given personalityId, or a dummy struct with .personalityId = PERS_NONE if not found.
  */
-personalityDef_t getPersonalityTemplate(uint8_t personalityId) 
+personalityDef_t getPersonalityTemplate(const uint8_t personalityId) 
 {
     const personalityDef_t ret = {
         .personalityId = PERS_NONE
@@ -227,8 +240,11 @@ personalityDef_t getPersonalityTemplate(uint8_t personalityId)
 
     for (uint8_t i = 0; i < g_TemplateCount; i++) {
         if (templateTable[i].personalityId == personalityId) {
+            /* found a match, return the template */
             return templateTable[i];
         }
     }
+
+    /* personality template not found */
     return ret;
 }

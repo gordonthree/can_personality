@@ -21,8 +21,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId     = DISP_ARGB_BUTTON_BACKLIGHT_ID,
         .introMsgDLC    = DISP_ARGB_BUTTON_BACKLIGHT_DLC,
-        .submod_flags   = SUBMOD_FLAG_DISPLAY | 
-                          SUBMOD_FLAG_OUTPUT,
+        .submod_flags   = SUBMOD_FLAG_DISPLAY,
         .producer_flags = 0,
         .runTime = {0}
     },
@@ -40,7 +39,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId          = INPUT_DIGITAL_GPIO_ID,
         .introMsgDLC         = INPUT_DIGITAL_GPIO_DLC,
-        .submod_flags        = SUBMOD_FLAG_INPUT,
+        .submod_flags        = SUBMOD_FLAG_DIRECTION, // flag set means input
         .producer_flags      = PRODUCER_FLAG_ACTIVE |
                                PRODUCER_FLAG_PUBLISH_ENABLED |
                                PRODUCER_FLAG_CHANGE_ONLY,

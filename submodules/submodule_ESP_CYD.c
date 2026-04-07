@@ -17,7 +17,6 @@ const subModule_t submod_setup[] = {
         .introMsgId   = DISP_TOUCHSCREEN_LCD_ID,
         .introMsgDLC  = DISP_TOUCHSCREEN_LCD_DLC,
         .submod_flags = SUBMOD_FLAG_DISPLAY | 
-                        SUBMOD_FLAG_OUTPUT |
                         SUBMOD_FLAG_READ_ONLY,
         .runTime = {0},
     },
@@ -33,8 +32,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId   = DISP_ANALOG_BACKLIGHT_ID,
         .introMsgDLC  = DISP_ANALOG_BACKLIGHT_DLC,
-        .submod_flags = SUBMOD_FLAG_DISPLAY |
-                        SUBMOD_FLAG_OUTPUT,
+        .submod_flags = SUBMOD_FLAG_DISPLAY,
         .runTime = {0}
     },
     {
@@ -49,8 +47,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId = DISP_ANALOG_LED_STRIP_ID,
         .introMsgDLC = DISP_ANALOG_LED_STRIP_DLC,
-        .submod_flags = SUBMOD_FLAG_DISPLAY |
-                        SUBMOD_FLAG_OUTPUT,
+        .submod_flags = SUBMOD_FLAG_DISPLAY,
         .runTime = {0}
     },
     {
@@ -65,8 +62,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId = DISP_ANALOG_LED_STRIP_ID,
         .introMsgDLC = DISP_ANALOG_LED_STRIP_DLC,
-        .submod_flags = SUBMOD_FLAG_DISPLAY |
-                        SUBMOD_FLAG_OUTPUT,
+        .submod_flags = SUBMOD_FLAG_DISPLAY,
         .runTime = {0}
         },
         {
@@ -81,8 +77,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId = DISP_ANALOG_LED_STRIP_ID,
         .introMsgDLC = DISP_ANALOG_LED_STRIP_DLC,
-        .submod_flags = SUBMOD_FLAG_DISPLAY |
-                        SUBMOD_FLAG_OUTPUT,
+        .submod_flags = SUBMOD_FLAG_DISPLAY,
         .runTime = {0}
         },
     {
@@ -97,11 +92,11 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId   = DATA_ADC_RAW_ID,
         .introMsgDLC  = DATA_ADC_RAW_DLC,
-        .submod_flags = SUBMOD_FLAG_INPUT,
-        .producer_period_ms  = PRODUCER_PERIOD_10000MS, 
-        .producer_kind       = PRODUCER_KIND_PERIODIC |
-                               PRODUCER_FLAG_ACTIVE |
-                               PRODUCER_FLAG_PUBLISH_ENABLED
+        .submod_flags = SUBMOD_FLAG_DIRECTION, // flag set means input
+        .producer_period_ms  = PRODUCER_PERIOD_1000MS, 
+        .producer_kind       = PRODUCER_KIND_PERIODIC,
+        .producer_flags      = PRODUCER_FLAG_ACTIVE |
+                               PRODUCER_FLAG_PUBLISH_ENABLED,
     }, {
         /* Submodule 6 - Analog speaker output */
         .personalityId = PERS_ANA_OUTPUT,
@@ -114,7 +109,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId   = DATA_ADC_RAW_ID,
         .introMsgDLC  = DATA_ADC_RAW_DLC,
-        .submod_flags = SUBMOD_FLAG_OUTPUT,
+        .submod_flags = SUBMOD_FLAG_NONE, // output by default
         .runTime = {0}
     }
     // Add more submodule configurations as needed

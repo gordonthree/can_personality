@@ -50,33 +50,7 @@ const personalityDef_t personalityTable[] = {
         /* Submodule builder flags */
         .flags         = BUILDER_FLAG_AUTO_CONFIGURE 
 
-    },
-    /* ----------------------------------------------------------------------
-     * Virtual Submodule 2 — WiFi RSSI
-     * ---------------------------------------------------------------------- */
-    {
-        .personalityId = VIRT_WIFI_RSSI,
-        .capabilities  = CAP_INPUT,              
-
-        /* Hardware mapping */
-        .gpioPin       = NO_GPIO_ASSIGNED,        
-        .pwmChannel    = NO_PWM_ASSIGNED,        
-        .pwmTimer      = NO_PWM_ASSIGNED,        
-        .isSinkDriver  = false,                  
-
-        /* Data reporting */
-        .dataMsgId     = DATA_RESERVED_51F_ID,                      
-        .dataMsgDlc    = DATA_RESERVED_51F_DLC,                     
-
-        /* Virtual configuration parameters */
-        .introMsgId    = SENSOR_RESERVED_72A_ID,
-        .introMsgDlc   = SENSOR_RESERVED_72A_DLC,
-        .period_ms     = 30000,
-
-        /* Submodule builder flags */
-        .flags         = BUILDER_FLAG_AUTO_CONFIGURE | BUILDER_FLAG_IS_INTERNAL
-
-    }    
+    }
 };
 
 /** Connect the pointer to the table */
