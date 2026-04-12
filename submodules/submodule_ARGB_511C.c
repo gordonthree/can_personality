@@ -19,8 +19,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId   = DISP_ARGB_LED_STRIP_ID,
         .introMsgDLC  = DISP_ARGB_LED_STRIP_DLC,
-        .submod_flags = SUBMOD_FLAG_DISPLAY,
-        .runTime = {0}
+        .submod_flags = SUBMOD_FLAG_DISPLAY
     },
     { 
         /* Submodule 1 - ARGB ONBOARD LED */
@@ -34,8 +33,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId   = DISP_ARGB_BUTTON_BACKLIGHT_ID,
         .introMsgDLC  = DISP_ARGB_BUTTON_BACKLIGHT_DLC,
-        .submod_flags = SUBMOD_FLAG_DISPLAY,
-        .runTime = {0}
+        .submod_flags = SUBMOD_FLAG_DISPLAY
     },
     {
         /* Submodule 2 - DIGITAL INPUT */
@@ -53,8 +51,7 @@ const subModule_t submod_setup[] = {
         .introMsgDLC         = INPUT_DIGITAL_GPIO_DLC,
         .submod_flags        = SUBMOD_FLAG_DIRECTION, // flag set means input
         .producer_flags      = PRODUCER_FLAG_ACTIVE |
-                               PRODUCER_FLAG_PUBLISH_ENABLED |
-                               PRODUCER_FLAG_CHANGE_ONLY,
+                               PRODUCER_FLAG_PUBLISH_ENABLED,
         .producer_period_ms  =  100, // PRODUCER_RATEMS_10HZ
         .producer_kind       = PRODUCER_KIND_PERIODIC,
         

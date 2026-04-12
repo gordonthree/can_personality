@@ -15,8 +15,11 @@ extern "C" {
 /**
  * @brief Structure to define a producer and hold its runtime state
  */
-typedef struct __attribute__((packed))
+typedef struct runtime_state
 {
+    /* submodule index */
+    uint8_t sub_idx;                /**< Submodule index */
+
     /* ============================
      *  RUNTIME SNAPSHOT
      * ============================ */
@@ -27,6 +30,8 @@ typedef struct __attribute__((packed))
      *  PRODUCER RUNTIME
      * ============================ */
     uint32_t last_published_value;  /**< Last value sent over CAN for change-only detection */
+    uint32_t last_published_ms;     /**< Timestamp of last published value (ms) */
+    uint8_t  publish_count;         /**< Counter of number of times the last published value repeated */
 
 } runTime_t;
 
@@ -144,7 +149,6 @@ uint8_t              router_flags;         /**< ROUTER_FLAG_* */
 uint8_t              producer_flags;       /**< PRODUCER_FLAG_* */
 
 /* Producer configuration and runtime data */
-runTime_t            runTime;              /**< Producer runtime state */
 producer_period_t    producer_period_ms;   /**< Producer publish period in ms */
 uint8_t              producer_kind;        /**< Producer kind (obsolete producer_kind_t) */
 

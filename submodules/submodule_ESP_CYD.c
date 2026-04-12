@@ -17,8 +17,7 @@ const subModule_t submod_setup[] = {
         .introMsgId   = DISP_TOUCHSCREEN_LCD_ID,
         .introMsgDLC  = DISP_TOUCHSCREEN_LCD_DLC,
         .submod_flags = SUBMOD_FLAG_DISPLAY | 
-                        SUBMOD_FLAG_READ_ONLY,
-        .runTime = {0},
+                        SUBMOD_FLAG_READ_ONLY
     },
     {
         /* Submodule 1 - GPIO OUTPUT, Backlight */
@@ -32,8 +31,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId   = DISP_ANALOG_BACKLIGHT_ID,
         .introMsgDLC  = DISP_ANALOG_BACKLIGHT_DLC,
-        .submod_flags = SUBMOD_FLAG_DISPLAY,
-        .runTime = {0}
+        .submod_flags = SUBMOD_FLAG_DISPLAY
     },
     {
         /* Submodule 2 - GPIO OUTPUT, RED LED */
@@ -47,8 +45,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId = DISP_ANALOG_LED_STRIP_ID,
         .introMsgDLC = DISP_ANALOG_LED_STRIP_DLC,
-        .submod_flags = SUBMOD_FLAG_DISPLAY,
-        .runTime = {0}
+        .submod_flags = SUBMOD_FLAG_DISPLAY
     },
     {
         /* Submodule 3 - GPIO OUTPUT, GREEN LED */
@@ -62,9 +59,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId = DISP_ANALOG_LED_STRIP_ID,
         .introMsgDLC = DISP_ANALOG_LED_STRIP_DLC,
-        .submod_flags = SUBMOD_FLAG_DISPLAY,
-        .runTime = {0}
-        },
+        .submod_flags = SUBMOD_FLAG_DISPLAY        },
         {
         /* Submodule 4 - GPIO OUTPUT, BLUE LED */
         .personalityId = PERS_GPIO_OUTPUT,
@@ -77,9 +72,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId = DISP_ANALOG_LED_STRIP_ID,
         .introMsgDLC = DISP_ANALOG_LED_STRIP_DLC,
-        .submod_flags = SUBMOD_FLAG_DISPLAY,
-        .runTime = {0}
-        },
+        .submod_flags = SUBMOD_FLAG_DISPLAY        },
     {
         /* Submodule 5 - Light dependent resistor, ANALOG INPUT */
         .personalityId = PERS_ANALOG_INPUT,
@@ -109,8 +102,7 @@ const subModule_t submod_setup[] = {
         },
         .introMsgId   = DATA_ADC_RAW_ID,
         .introMsgDLC  = DATA_ADC_RAW_DLC,
-        .submod_flags = SUBMOD_FLAG_NONE, // output by default
-        .runTime = {0}
+        .submod_flags = SUBMOD_FLAG_NONE // output by default
     }
     // Add more submodule configurations as needed
 };
